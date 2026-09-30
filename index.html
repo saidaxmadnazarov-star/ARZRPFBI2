@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIB | Winslow 14 — Arizona RP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-icon">FIB</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Federal Investigation Bureau</span>
+                        <span class="logo-sub">Winslow 14 • Arizona RP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    Система активна
+                </div>
+                <div class="user-info">
+                    <span class="user-role">Агент FIB</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <button class="nav-btn active" data-tab="recommendations">
+                <span class="nav-icon">📋</span>
+                <span class="nav-label">Рекомендации от ID</span>
+            </button>
+            <button class="nav-btn" data-tab="recruitments">
+                <span class="nav-icon">🤝</span>
+                <span class="nav-label">Вербовки</span>
+            </button>
+            <button class="nav-btn" data-tab="registry">
+                <span class="nav-icon">🏛️</span>
+                <span class="nav-label">Реестр проверок</span>
+            </button>
+            <button class="nav-btn" data-tab="questionnaires">
+                <span class="nav-icon">📝</span>
+                <span class="nav-label">Анкеты (Гражданские / Полиция / CIU)</span>
+            </button>
+            <button class="nav-btn" data-tab="bl-recruitments">
+                <span class="nav-icon">🚫</span>
+                <span class="nav-label">ЧС Вербовок</span>
+            </button>
+            <button class="nav-btn" data-tab="bl-id">
+                <span class="nav-icon">⛔</span>
+                <span class="nav-label">ЧС ID</span>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Рекомендации от ID -->
+            <section id="recommendations" class="tab-panel active">
+                <div class="panel-header">
+                    <h1>Рекомендации от ID</h1>
+                    <p class="panel-desc">Рекомендации, выданные сотрудниками Internal Division</p>
+                    <button class="btn btn-primary" onclick="openModal('rec')">+ Добавить рекомендацию</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>ФИО / Ник</th>
+                                <th>ID</th>
+                                <th>Кто рекомендовал</th>
+                                <th>Дата</th>
+                                <th>Комментарий</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rec-tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>John_Doe</td>
+                                <td>15234</td>
+                                <td>Agent_Smith</td>
+                                <td>28.09.2026</td>
+                                <td>Хорошие знания законов, активен</td>
+                                <td><span class="badge badge-success">Одобрено</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Mike_Johnson</td>
+                                <td>18901</td>
+                                <td>Agent_Brown</td>
+                                <td>29.09.2026</td>
+                                <td>Рекомендация на стажировку</td>
+                                <td><span class="badge badge-warning">На рассмотрении</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Вербовки -->
+            <section id="recruitments" class="tab-panel">
+                <div class="panel-header">
+                    <h1>Вербовки</h1>
+                    <p class="panel-desc">Активные и завершённые процессы вербовки в FIB</p>
+                    <button class="btn btn-primary" onclick="openModal('recruit')">+ Новая вербовка</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Кандидат</th>
+                                <th>ID</th>
+                                <th>Вербовщик</th>
+                                <th>Дата начала</th>
+                                <th>Этап</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recruit-tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>Alex_River</td>
+                                <td>20145</td>
+                                <td>Agent_Miller</td>
+                                <td>25.09.2026</td>
+                                <td>Собеседование</td>
+                                <td><span class="badge badge-info">В процессе</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Sarah_Connor</td>
+                                <td>17892</td>
+                                <td>Agent_Wilson</td>
+                                <td>20.09.2026</td>
+                                <td>Финальная проверка</td>
+                                <td><span class="badge badge-success">Завершена</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Реестр проверок гос организаций -->
+            <section id="registry" class="tab-panel">
+                <div class="panel-header">
+                    <h1>Реестр проверок гос. организаций</h1>
+                    <p class="panel-desc">Проверки государственных структур и организаций</p>
+                    <button class="btn btn-primary" onclick="openModal('registry')">+ Добавить проверку</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Организация</th>
+                                <th>Тип проверки</th>
+                                <th>Ответственный</th>
+                                <th>Дата</th>
+                                <th>Результат</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody id="registry-tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>LSPD</td>
+                                <td>Плановая</td>
+                                <td>Agent_Davis</td>
+                                <td>15.09.2026</td>
+                                <td>Без нарушений</td>
+                                <td><span class="badge badge-success">Закрыта</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>EMS</td>
+                                <td>Внеплановая</td>
+                                <td>Agent_Taylor</td>
+                                <td>22.09.2026</td>
+                                <td>Требует доработки</td>
+                                <td><span class="badge badge-warning">В работе</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Правительство</td>
+                                <td>Специальная</td>
+                                <td>Agent_Clark</td>
+                                <td>27.09.2026</td>
+                                <td>—</td>
+                                <td><span class="badge badge-info">Назначена</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Анкеты -->
+            <section id="questionnaires" class="tab-panel">
+                <div class="panel-header">
+                    <h1>Анкеты</h1>
+                    <p class="panel-desc">Анкеты гражданских, полиции и CIU</p>
+                    <div class="filter-group">
+                        <button class="btn btn-outline filter-btn active" data-filter="all">Все</button>
+                        <button class="btn btn-outline filter-btn" data-filter="civilian">Гражданские</button>
+                        <button class="btn btn-outline filter-btn" data-filter="police">Полиция</button>
+                        <button class="btn btn-outline filter-btn" data-filter="ciu">CIU</button>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('quest')">+ Новая анкета</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>ФИО / Ник</th>
+                                <th>ID</th>
+                                <th>Тип</th>
+                                <th>Дата подачи</th>
+                                <th>Проверяющий</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quest-tbody">
+                            <tr data-type="civilian">
+                                <td>1</td>
+                                <td>Ivan_Petrov</td>
+                                <td>22341</td>
+                                <td><span class="type-tag type-civ">Гражданский</span></td>
+                                <td>26.09.2026</td>
+                                <td>Agent_Lee</td>
+                                <td><span class="badge badge-warning">На проверке</span></td>
+                            </tr>
+                            <tr data-type="police">
+                                <td>2</td>
+                                <td>Officer_Blake</td>
+                                <td>14567</td>
+                                <td><span class="type-tag type-pol">Полиция</span></td>
+                                <td>24.09.2026</td>
+                                <td>Agent_Kim</td>
+                                <td><span class="badge badge-success">Одобрена</span></td>
+                            </tr>
+                            <tr data-type="ciu">
+                                <td>3</td>
+                                <td>CIU_Agent_X</td>
+                                <td>16789</td>
+                                <td><span class="type-tag type-ciu">CIU</span></td>
+                                <td>28.09.2026</td>
+                                <td>Agent_Park</td>
+                                <td><span class="badge badge-info">На рассмотрении</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ЧС Вербовок -->
+            <section id="bl-recruitments" class="tab-panel">
+                <div class="panel-header">
+                    <h1>Чёрный список вербовок</h1>
+                    <p class="panel-desc">Лица, которым запрещена вербовка в FIB</p>
+                    <button class="btn btn-danger" onclick="openModal('blrec')">+ Добавить в ЧС</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>ФИО / Ник</th>
+                                <th>ID</th>
+                                <th>Причина</th>
+                                <th>Кто добавил</th>
+                                <th>Дата</th>
+                                <th>Срок</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blrec-tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>Toxic_Player</td>
+                                <td>99812</td>
+                                <td>Многократные нарушения, токсичность</td>
+                                <td>Agent_Boss</td>
+                                <td>10.09.2026</td>
+                                <td><span class="badge badge-danger">Бессрочно</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Fake_Agent</td>
+                                <td>55432</td>
+                                <td>Попытка обмана при вербовке</td>
+                                <td>Agent_Secure</td>
+                                <td>18.09.2026</td>
+                                <td>30 дней</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ЧС ID -->
+            <section id="bl-id" class="tab-panel">
+                <div class="panel-header">
+                    <h1>Чёрный список ID</h1>
+                    <p class="panel-desc">Идентификаторы, заблокированные для взаимодействия с FIB</p>
+                    <button class="btn btn-danger" onclick="openModal('blid')">+ Добавить ID в ЧС</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>ID</th>
+                                <th>Ник (если известен)</th>
+                                <th>Причина</th>
+                                <th>Кто добавил</th>
+                                <th>Дата</th>
+                                <th>Срок</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blid-tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>77777</td>
+                                <td>Cheater_Pro</td>
+                                <td>Читы / эксплойты</td>
+                                <td>Agent_Admin</td>
+                                <td>05.09.2026</td>
+                                <td><span class="badge badge-danger">Бессрочно</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>33321</td>
+                                <td>—</td>
+                                <td>Подозрение в RDM / Mass RDM</td>
+                                <td>Agent_Watch</td>
+                                <td>21.09.2026</td>
+                                <td>14 дней</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>FIB Winslow 14 • Arizona RP • Внутренний ресурс</span>
+            <span class="footer-note">Только для сотрудников FIB</span>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="modal-title">Добавить запись</h2>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic form -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Отмена</button>
+                <button class="btn btn-primary" onclick="submitModal()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
